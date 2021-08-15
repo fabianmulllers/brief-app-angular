@@ -1,1 +1,42 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
 /* You can add global styles to this file, and also import other style files */
+
+
+
+html,body{
+    background-color: #F8F9FA;
+}
+.container{
+    box-shadow: -12px 52px 197px -7px rgba(120,17,247,0.13);
+}
+
+h1{
+    color :#7811F7
+}
+
+nav{
+    box-shadow: -2px 15px 5px 0px rgba(120,17,247,0.04);
+}
+
+#login{
+    padding: 30vh 0;
+    img{
+        width: 72px;
+        height: 57px;
+        margin: 0 auto;
+        display: block;
+    }
+
+}
+
+.acciones-tabla{
+    i{
+        font-size: 1.2em;
+        color :#7811F7
+    }
+}
+
+.modal-header{
+    background-color:#7811F7 ;
+    color:#fff;
+}

@@ -1,0 +1,23 @@
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">nombre</th>
+          <th scope="col" class="text-center"> acciones </th>
+        </tr>
+      </thead>
+    <tbody>
+        <tr *ngFor="let role of roles; let i = index;">
+          <th scope="row"> {{  i + 1 }} </th>
+          <td>{{ role.nombre }}</td>
+          <td>
+            <div class="d-flex justify-content-center">
+                <div class="btn-group acciones-tabla" role="group">
+                    <button type="button" class="btn" (click)="editar( role.id! )" ><i class="bi bi-pencil-square"></i></button>
+                    <button type="button" class="btn" (click)="eliminar( role.id! )"><i class="bi bi-trash"></i></button>
+                </div>
+            </div>
+        </tr>
+    </tbody>
+</table>

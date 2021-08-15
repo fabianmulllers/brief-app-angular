@@ -1,0 +1,119 @@
+  
+<div class="modal fade" id="ModalAgregarEditarUsuarios" tabindex="-1" aria-labelledby="modalAgregarEditar" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAgregarEditar">
+                    {{ getUsuario() }}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="form" (ngSubmit)="enviar()">
+                <div class="modal-body">
+                    <!-- alertas  -->
+                    <app-alert></app-alert>
+                    <!-- alerta -->
+                        <div class="mb-3 ">
+                            <label for="nombre-usuario" class="col-form-label">Nombre:</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="nombre-usuario" 
+                                placeholder="Ingresa nombre"
+                                formControlName="nombre"
+                                [ngClass]="{'is-invalid': camposEsValido('nombre') }"
+                                >
+
+                            <div class="invalid-feedback">
+                                Debes ingresar el nombre
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email-usuario" class="col-form-label">Email:</label>
+                            <input 
+                                type="email" 
+                                class="form-control"
+                                id="email-usuario" 
+                                placeholder="Ingresa email"
+                                formControlName="email"
+                                [ngClass]="{'is-invalid': camposEsValido('email') }">
+
+                            <div class="invalid-feedback">
+                                Debes ingresar el email
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="area-usuario" class="col-form-label">Area:</label>
+                            <select 
+                                class="form-select"
+                                formControlName="area"
+                                [ngClass]="{'is-invalid': camposEsValido('area') }"
+                                (change)="cambiarArea()">
+                                <option value="">Selecciona Area</option>
+                                <option 
+                                    *ngFor="let area of areas"
+                                    value="{{ area.id }}">
+                                    {{ area.nombre | titlecase }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Debes ingresar el area
+                            </div>
+                        </div>
+                        <div class="mb-3" *ngIf="roles.length > 0">
+                            <label for="role-usuario" class="col-form-label">Role:</label>
+                            <select 
+                                class="form-select"
+                                formControlName="role"
+                                [ngClass]="{'is-invalid': camposEsValido('role') }">
+                                <option value="">Selecciona Role</option>
+                                <option 
+                                    *ngFor="let role of roles"
+                                    value="{{ role.id}}">
+                                    {{ role.nombre | titlecase }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Debes ingresar el role
+                            </div>
+                        </div>
+                        <div class="mb-3" *ngIf="!editar">
+                            <label for="password-usuario" class="col-form-label">Password:</label>
+                            <input 
+                                type="password" 
+                                class="form-control" 
+                                id="password-usuario"
+                                formControlName="password"
+                                [ngClass]="{'is-invalid': camposEsValido('password') }">
+                            <div class="invalid-feedback">
+                                Debes ingresar el password
+                            </div>
+                        </div>
+
+                        <div class="mb-3" *ngIf="!editar">
+                            <label for="confirm-passwor-usuario" class="col-form-label">Confirmar Password:</label>
+                            <input 
+                                type="password" 
+                                class="form-control" 
+                                id="confirm-password-usuario"
+                                formControlName="confirmPassword"
+                                [ngClass]="{'is-invalid': camposEsValido('confirmPassword') }">
+                            <div class="invalid-feedback">
+                                Debes confirmar el password
+                            </div>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" 
+                        class="btn btn-primary"
+                        >{{ getUsuario() }} Usuario</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+

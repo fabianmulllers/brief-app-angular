@@ -1,0 +1,41 @@
+<div class="modal fade" id="agregarEditarEmpresa" tabindex="-1" aria-labelledby="agregarEditarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="agregarEditarModalLabel">
+                    {{ (editar)?'Editar':'Agregar' }}
+                    Empresa
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="form" (ngSubmit)="enviar()">
+                <div class="modal-body">
+                    <app-alert></app-alert>
+                    <div class="mb-3 ">
+                        <label for="nombre" class="col-form-label">Nombre:</label>
+                        <input 
+                        type="text" 
+                        class="form-control"
+                        placeholder="Ingresa nombre empresa"
+                        formControlName="nombre"
+                        [ngClass] = "{'is-invalid': campoValido('nombre')}"
+                        >
+
+                        <div class="invalid-feedback">
+                            Debes ingresar el nombre
+                        </div>
+                    </div>
+        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button 
+                        type="submit" 
+                        class="btn btn-primary">
+                        {{ (editar)?'Editar':'Agregar' }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

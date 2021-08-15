@@ -1,0 +1,56 @@
+<div class="modal fade" id="agregarEditarCliente" tabindex="-1" aria-labelledby="agregarEditarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="agregarEditarModalLabel">
+                    Cliente
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="form" (ngSubmit)="enviar()">
+                <div class="modal-body">
+                    <app-alert></app-alert>
+                    <div class="mb-3 ">
+                        <label for="nombre" class="col-form-label">Nombre:</label>
+                        <input 
+                        type="text" 
+                        class="form-control"
+                        placeholder="Ingresa nombre cliente"
+                        formControlName="nombre"
+                        [ngClass]="{'is-invalid': camposEsValido('nombre') }"
+                        >
+
+                        <div class="invalid-feedback">
+                            Debes ingresar el nombre
+                        </div>
+                    </div>
+
+                    <div class="mb-3 ">
+                        <label for="nombre" class="col-form-label">Empresa:</label>
+
+                        <ng-select [items]="empresas" 
+                            bindLabel="nombre" 
+                            bindValue="id" 
+                            formControlName="empresa"
+                            [ngClass]="{'is-invalid': camposEsValido('empresa') }">
+                        </ng-select>
+
+                        <div class="invalid-feedback">
+                            Debes ingresar la empresa
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button 
+                        type="submit" 
+                        class="btn btn-primary">
+                        agregar
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
